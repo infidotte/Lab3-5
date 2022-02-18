@@ -2,7 +2,7 @@ package com.company.Classes;
 
 import com.company.EntityImpl.BassGuitar;
 import com.company.EntityImpl.SimpleGuitar;
-import com.company.Guitar;
+import com.company.Interfaces.Guitar;
 
 import java.io.*;
 import java.util.Arrays;

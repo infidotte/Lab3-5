@@ -1,11 +1,8 @@
 package com.company;
 
 import com.company.Classes.Methods;
-import com.company.Classes.Statics;
-import com.company.EntityImpl.BassGuitar;
-import com.company.EntityImpl.SimpleGuitar;
+import com.company.Interfaces.Guitar;
 
-import java.io.*;
 import java.util.*;
 
 public class Main {
@@ -15,7 +12,8 @@ public class Main {
         System.out.println("write to call functions: \n" +
                 "1 - start lab3 with preset objects\n" +
                 "2 - start with custom\n" +
-                "3 - start lab4 methods");
+                "3 - start lab4 methods\n" +
+                "4 - start lab5");
         int choice = Integer.parseInt(sc.nextLine());
         Methods met = new Methods();
         switch (choice) {
@@ -30,6 +28,13 @@ public class Main {
             case 3:
                 Guitar[] array3 = met.presetArray();
                 met.outinput(array3);
+                break;
+            case 4:
+                met.threads();
+                break;
+            default:
+                System.out.println("Error");
+                break;
         }
 
     }

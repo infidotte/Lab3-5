@@ -1,4 +1,4 @@
-package com.company;
+package com.company.Interfaces;
 
 import com.company.Exceptions.BrokenPickUpException;
 

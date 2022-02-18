@@ -1,11 +1,12 @@
 package com.company.Classes;
 
 import com.company.EntityImpl.BassGuitar;
+import com.company.EntityImpl.Impl;
 import com.company.EntityImpl.SimpleGuitar;
-import com.company.Guitar;
+import com.company.Interfaces.Guitar;
+import com.company.Interfaces.Inter;
 
 import java.io.*;
-import java.util.Arrays;
 import java.util.Scanner;
 
 public class Methods {
@@ -142,5 +143,17 @@ public class Methods {
         }
         Statics.serialOutput(array);
         Statics.serialInput();
+    }
+
+    public void threads(){
+        Scanner sc = new Scanner(System.in);
+        int size = Integer.parseInt(sc.nextLine());
+        Inter obj = new Impl(size);
+        Thread writer = new WriterThread(obj);
+        Thread reader = new ReaderThread(obj);
+        System.out.println("Main thread started...");
+        reader.start();
+        writer.start();
+        System.out.println("Main thread fin...");
     }
 }

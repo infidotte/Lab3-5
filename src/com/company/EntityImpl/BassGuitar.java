@@ -2,7 +2,7 @@ package com.company.EntityImpl;
 
 import com.company.Exceptions.BrokenCostException;
 import com.company.Exceptions.BrokenPickUpException;
-import com.company.Guitar;
+import com.company.Interfaces.Guitar;
 
 import java.io.*;
 import java.util.Arrays;
