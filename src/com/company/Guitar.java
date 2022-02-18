@@ -2,7 +2,7 @@ package com.company;
 
 import com.company.Exceptions.BrokenPickUpException;
 
-import java.io.OutputStream;
+import java.io.*;
 
 public interface Guitar {
     String getName();
@@ -21,5 +21,13 @@ public interface Guitar {
 
     void checkPickUp(String pickUp) throws BrokenPickUpException;
 
-    void output(OutputStream out);
+    void output(OutputStream out) throws IOException;
+
+    void write(Writer out) throws IOException;
+
+    void getToRead();
+
+    Guitar createFromInputStream(InputStream input) throws IOException;
+
+    Guitar createFromReader(Reader reader) throws IOException;
 }
