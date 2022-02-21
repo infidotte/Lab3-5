@@ -16,9 +16,11 @@ public class SimpleGuitar implements Guitar, Serializable {
 
     //block to Lab4
     private String[] toRead = {};
+
     public SimpleGuitar(String[] b) {
         toRead = b;
     }
+
     public void getToRead() {
         for (String i : toRead) {
             System.out.print((char) Integer.parseInt(i));
@@ -53,18 +55,23 @@ public class SimpleGuitar implements Guitar, Serializable {
     public String getPickup(int index) {
         return pickups[index];
     }
+
     public String[] getPickups() {
         return pickups;
     }
+
     public String getName() {
         return guitar_name;
     }
+
     public void setName(String name) {
         this.guitar_name = name;
     }
+
     public int getCost() {
         return guitar_cost;
     }
+
     public void setCost(int cost) {
         this.guitar_cost = cost;
     }
@@ -88,6 +95,7 @@ public class SimpleGuitar implements Guitar, Serializable {
         }
 
     }
+
     public void checkCost(int cost) throws BrokenCostException {
         if (cost < 0) {
             throw new BrokenCostException("Broken message");
@@ -105,9 +113,11 @@ public class SimpleGuitar implements Guitar, Serializable {
         out.write('R');
         out.write(' ');
     }
+
     public void write(Writer out) throws IOException {
         out.write("GUITAR! ");
     }
+
     public Guitar createFromInputStream(InputStream input) throws IOException {
         int code;
         String str = "";
@@ -119,6 +129,7 @@ public class SimpleGuitar implements Guitar, Serializable {
         Guitar inputGuitar = new SimpleGuitar(arr);
         return inputGuitar;
     }
+
     public Guitar createFromReader(Reader reader) throws IOException {
         int charCode;
         String str = "";

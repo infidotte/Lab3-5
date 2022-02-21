@@ -7,7 +7,9 @@ import com.company.Interfaces.Guitar;
 import com.company.Interfaces.Inter;
 
 import java.io.*;
+import java.util.Arrays;
 import java.util.Scanner;
+import java.util.concurrent.Semaphore;
 
 public class Methods {
 
@@ -49,9 +51,9 @@ public class Methods {
         }
         Guitar[] result = new Guitar[count];
         count = 0;
-        for (int i = 0; i < array.length; i++) {
-            if (array[i].ifHumbucker()) {
-                result[count] = array[i];
+        for (Guitar guitar : array) {
+            if (guitar.ifHumbucker()) {
+                result[count] = guitar;
                 count++;
             }
         }
@@ -91,7 +93,7 @@ public class Methods {
         }
     }
 
-    public Guitar[] presetArray(){
+    public Guitar[] presetArray() {
         String[] guitar_pickups = {"Bridge-Humbucker", "Middle-Humbucker"};
         String guitar_name = "ZOMBIE";
         int guitar_cost = 19900;
@@ -116,7 +118,7 @@ public class Methods {
         return array;
     }
 
-    public void outinput(Guitar[] array){
+    public void outinput(Guitar[] array) {
         File bytes = new File("src/com/company/Files/bytes.txt");
         File chars = new File("src/com/company/Files/chars.txt");
         File toReadBytes = new File("src/com/company/Files/toReadBytes.txt");
@@ -145,7 +147,7 @@ public class Methods {
         Statics.serialInput();
     }
 
-    public void threads(){
+    public void threads() {
         Scanner sc = new Scanner(System.in);
         int size = Integer.parseInt(sc.nextLine());
         Inter obj = new Impl(size);
@@ -154,6 +156,33 @@ public class Methods {
         System.out.println("Main thread started...");
         reader.start();
         writer.start();
-        System.out.println("Main thread fin...");
+        System.out.println("Main thread finished...");
+    }
+
+    public void runnablethreads() {
+        Scanner sc = new Scanner(System.in);
+        int size = Integer.parseInt(sc.nextLine());
+        Inter obj = new Impl(size);
+        Semaphore sem = new Semaphore(1);
+        System.out.println("Main thread started...");
+        for (int i = 0; i < size; i++) {
+            new RunnableWriterThread(obj, i, sem).run();
+            new RunnableReaderThread(obj, i, sem).run();
+        }
+        System.out.println("Main thread finished... Result: " + Arrays.toString(obj.getArray()));
+
+    }
+
+    public void synchthreads() {
+        Scanner sc = new Scanner(System.in);
+        int size = Integer.parseInt(sc.nextLine());
+        Inter obj = new Impl(size);
+        Inter safe = Statics.synchronizedInter(obj);
+        Thread writer = new WriterThread(safe);
+        Thread reader = new ReaderThread(safe);
+        System.out.println("Main thread started...");
+        reader.start();
+        writer.start();
+        System.out.println("Main thread finished...");
     }
 }

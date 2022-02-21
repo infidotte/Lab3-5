@@ -12,13 +12,13 @@ public class Impl implements Inter {
         array = new int[size];
     }
 
+    @Override
     public int[] getArray() {
         return array;
     }
 
     public int getIndexArray(int index) {
-        int result = array[index];
-        return result;
+        return this.array[index];
     }
 
     public void setIndexArray(int index, int value) {
@@ -26,8 +26,7 @@ public class Impl implements Inter {
     }
 
     public int getLength() {
-        int length = this.array.length;
-        return length;
+        return this.array.length;
     }
 
     @Override

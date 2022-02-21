@@ -1,7 +1,7 @@
 package com.company.Exceptions;
 
-public class BrokenCostException extends Exception{
-    public BrokenCostException(String message){
+public class BrokenCostException extends Exception {
+    public BrokenCostException(String message) {
         super(message);
     }
 

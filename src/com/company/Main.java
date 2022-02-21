@@ -13,17 +13,19 @@ public class Main {
                 "1 - start lab3 with preset objects\n" +
                 "2 - start with custom\n" +
                 "3 - start lab4 methods\n" +
-                "4 - start lab5");
+                "4 - start lab5 1st task\n" +
+                "5 - start lab5 2nd task\n" +
+                "6 - start lab5 3st task");
         int choice = Integer.parseInt(sc.nextLine());
         Methods met = new Methods();
         switch (choice) {
             case 1:
                 Guitar[] array1 = met.presetArray();
-                cicle(array1,met);
+                cicle(array1, met);
                 break;
             case 2:
                 Guitar[] array2 = met.createArray();
-                cicle(array2,met);
+                cicle(array2, met);
                 break;
             case 3:
                 Guitar[] array3 = met.presetArray();
@@ -32,15 +34,22 @@ public class Main {
             case 4:
                 met.threads();
                 break;
+            case 5:
+                met.runnablethreads();
+                break;
+            case 6:
+                met.synchthreads();
+                break;
             default:
                 System.out.println("Error");
                 break;
         }
 
     }
-    public static void cicle(Guitar[] array, Methods met){
-        for(int i = 0; i< array.length; i++){
-            System.out.println(i+1 + ": " + array[i]);
+
+    public static void cicle(Guitar[] array, Methods met) {
+        for (int i = 0; i < array.length; i++) {
+            System.out.println(i + 1 + ": " + array[i]);
         }
         System.out.println("\nМассив объектов по функциональному методу:\n" + Arrays.toString(met.functionArray(array)));
         Guitar[] guitas = met.checkCode(array, 2);

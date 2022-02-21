@@ -8,7 +8,7 @@ import java.io.*;
 import java.util.Arrays;
 import java.util.Objects;
 
-public class BassGuitar implements Guitar,Serializable {
+public class BassGuitar implements Guitar, Serializable {
 
     private String[] pickups;
     private String bass_name;
@@ -16,9 +16,11 @@ public class BassGuitar implements Guitar,Serializable {
 
     //block to Lab4
     private String[] toRead = {};
+
     public BassGuitar(String[] b) {
         toRead = b;
     }
+
     public void getToRead() {
         for (String i : toRead) {
             System.out.print((char) Integer.parseInt(i));
@@ -53,18 +55,23 @@ public class BassGuitar implements Guitar,Serializable {
     public String getName() {
         return bass_name;
     }
+
     public void setName(String name) {
         this.bass_name = name;
     }
+
     public String getPickup(int index) {
         return pickups[index];
     }
+
     public String[] getPickups() {
         return pickups;
     }
+
     public int getCost() {
         return bass_cost;
     }
+
     public void setCost(int cost) {
         this.bass_cost = cost;
     }
@@ -88,6 +95,7 @@ public class BassGuitar implements Guitar,Serializable {
         }
 
     }
+
     public void checkCost(int cost) throws BrokenCostException {
         if (cost < 0) {
             throw new BrokenCostException("Broken message");
@@ -103,9 +111,11 @@ public class BassGuitar implements Guitar,Serializable {
         out.write('S');
         out.write(' ');
     }
+
     public void write(Writer out) throws IOException {
         out.write("BASS! ");
     }
+
     public Guitar createFromInputStream(InputStream input) throws IOException {
         int code;
         String str = "";
@@ -117,6 +127,7 @@ public class BassGuitar implements Guitar,Serializable {
         Guitar inputBass = new BassGuitar(arr);
         return inputBass;
     }
+
     public Guitar createFromReader(Reader reader) throws IOException {
         int charCode;
         String str = "";
