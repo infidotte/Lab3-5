@@ -3,8 +3,10 @@ package com.company.Interfaces;
 import com.company.Exceptions.BrokenPickUpException;
 
 import java.io.*;
+import java.util.Iterator;
 
-public interface Guitar {
+
+public interface Guitar extends Iterable {
     String getName();
 
     void setName(String name);
@@ -30,4 +32,7 @@ public interface Guitar {
     Guitar createFromInputStream(InputStream input) throws IOException;
 
     Guitar createFromReader(Reader reader) throws IOException;
+
+    @Override
+    Iterator iterator();
 }

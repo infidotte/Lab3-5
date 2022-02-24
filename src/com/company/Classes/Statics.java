@@ -4,12 +4,19 @@ import com.company.EntityImpl.BassGuitar;
 import com.company.EntityImpl.InterWrapperImpl;
 import com.company.EntityImpl.SimpleGuitar;
 import com.company.Interfaces.Guitar;
+import com.company.Interfaces.GuitarFactory;
 import com.company.Interfaces.Inter;
 
 import java.io.*;
 import java.util.Arrays;
 
 public class Statics {
+
+    private static GuitarFactory guitarFactory;
+
+    public static void setGuitarFactory(GuitarFactory factory) {
+        guitarFactory = factory;
+    }
 
     public static void outputGuitar(Guitar guitar, OutputStream out) throws IOException {
         guitar.output(out);
@@ -58,5 +65,13 @@ public class Statics {
     public static Inter synchronizedInter(Inter i) {
         Inter obj = new InterWrapperImpl(i);
         return obj;
+    }
+
+    public static Guitar unmodifiableGuitar(Guitar o) {
+        return new UnModifiable(o);
+    }
+
+    public static Guitar createInstance() {
+        return guitarFactory.createInstance();
     }
 }

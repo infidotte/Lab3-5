@@ -6,6 +6,7 @@ import com.company.Interfaces.Guitar;
 
 import java.io.*;
 import java.util.Arrays;
+import java.util.Iterator;
 import java.util.Objects;
 
 public class SimpleGuitar implements Guitar, Serializable {
@@ -87,6 +88,7 @@ public class SimpleGuitar implements Guitar, Serializable {
         return res;
     }
 
+
     //exception methods
     @Override
     public void checkPickUp(String PickUp) throws BrokenPickUpException {
@@ -141,7 +143,15 @@ public class SimpleGuitar implements Guitar, Serializable {
         Guitar inputGuitar = new SimpleGuitar(arr);
         return inputGuitar;
     }
+
+    @Override
+    public Iterator iterator() {
+        Iterator iter = new com.company.Classes.Iterator(this);
+        return iter;
+    }
+
     //lab4 methods
+
 
     //override
     @Override
@@ -167,4 +177,6 @@ public class SimpleGuitar implements Guitar, Serializable {
         result = 31 * result + Arrays.hashCode(pickups);
         return result;
     }
+
+
 }

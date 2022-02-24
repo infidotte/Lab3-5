@@ -6,7 +6,9 @@ import com.company.Interfaces.Guitar;
 
 import java.io.*;
 import java.util.Arrays;
+import java.util.Iterator;
 import java.util.Objects;
+import java.util.PrimitiveIterator;
 
 public class BassGuitar implements Guitar, Serializable {
 
@@ -139,7 +141,15 @@ public class BassGuitar implements Guitar, Serializable {
         Guitar inputBass = new BassGuitar(arr);
         return inputBass;
     }
+
     //lab4 methods
+
+
+    @Override
+    public Iterator iterator() {
+        Iterator iter = new com.company.Classes.Iterator(this);
+        return iter;
+    }
 
     //override
     @Override

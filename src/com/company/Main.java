@@ -1,6 +1,10 @@
 package com.company;
 
 import com.company.Classes.Methods;
+import com.company.Classes.Statics;
+import com.company.Classes.UnModifiable;
+import com.company.EntityImpl.BassGuitar;
+import com.company.Factories.SimpleGuitarFactory;
 import com.company.Interfaces.Guitar;
 
 import java.util.*;
@@ -15,7 +19,10 @@ public class Main {
                 "3 - start lab4 methods\n" +
                 "4 - start lab5 1st task\n" +
                 "5 - start lab5 2nd task\n" +
-                "6 - start lab5 3st task");
+                "6 - start lab5 3st task\n" +
+                "7 - start iterator\n" +
+                "8 - start unmodifiable\n" +
+                "9 - start factory");
         int choice = Integer.parseInt(sc.nextLine());
         Methods met = new Methods();
         switch (choice) {
@@ -39,6 +46,23 @@ public class Main {
                 break;
             case 6:
                 met.synchthreads();
+                break;
+            case 7:
+                Guitar[] array = met.presetArray();
+                for (Guitar i : array) {
+                    Iterator iterator = i.iterator();
+                    while (iterator.hasNext()) {
+                        System.out.println(iterator.next());
+                    }
+                }
+                break;
+            case 8:
+                Guitar test = new UnModifiable(new BassGuitar());
+                test.setCost(1500);
+                break;
+            case 9:
+                Statics.setGuitarFactory(new SimpleGuitarFactory());
+                System.out.println(Statics.createInstance());
                 break;
             default:
                 System.out.println("Error");
